@@ -205,3 +205,32 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+# =================================================
+# 自定义 LLM 学习补丁 (针对 256G Mac 优化)
+# =================================================
+
+# 1. 屏蔽模型文件 (绝对不能传，动辄几个GB)
+*.gguf
+*.bin
+*.onnx
+*.pt
+*.pth
+/models/
+
+# 2. 屏蔽大型数据集 (防止同步时撑爆 Mac)
+/data/
+*.csv
+*.jsonl
+*.parquet
+
+# 3. 屏蔽本地私密配置 (虽然上面有 .env，但建议补强)
+.env.*
+!.env.example
+secrets.yaml
+
+# 4. 屏蔽 IDE 项目配置 (解决你刚才看到的弹窗问题)
+.idea/
+.vscode/
+
+# 5. 屏蔽 Mac 系统产生的垃圾文件
+.DS_Store
